@@ -8,6 +8,25 @@
 - [ ] contribute page
 - [x] firebase setup
 
+### get doc
+
+```js
+const getFirebaseDatas = async () => {
+  const querySnapshot = await getDocs(collection(db, "touristPlaces"));
+  const data = querySnapshot.docs.map((doc) => {
+    const getData = doc.data();
+    const getId = doc.id;
+    const finalData = { ...getData, id: getId };
+    return finalData;
+  });
+  console.log(data);
+  if (querySnapshot.docs.length === 0) {
+    console.log("norecord exist");
+  }
+};
+getFirebaseDatas();
+```
+
 ### set doc
 
 ```js
@@ -22,7 +41,18 @@ const setData = async () => {
 setData();
 ```
 
-## update doc
+### add Doc
+
+```js
+const setFireStoreData = async () => {
+  await addDoc(collection(db, "location"), {
+    name:"valankanni"
+     district: "nagappatinam",
+  });
+};
+```
+
+### update doc
 
 ```js
 const updateData = async () => {

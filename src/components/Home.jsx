@@ -11,22 +11,7 @@ import {
 import db from "../firebase";
 
 export const Home = () => {
-  useEffect(() => {
-    //     const getFirebaseDatas = async () => {
-    //       const querySnapshot = await getDocs(collection(db, "touristPlaces"));
-    //       const data = querySnapshot.docs.map((doc) => {
-    //         const getData = doc.data();
-    //         const getId = doc.id;
-    //         const finalData = { ...getData, id: getId };
-    //         return finalData;
-    //       });
-    //       console.log(data);
-    //       if (querySnapshot.docs.length === 0) {
-    //         console.log("norecord exist");
-    //       }
-    //     };
-    //     getFirebaseDatas();
-  }, []);
+  useEffect(() => {}, []);
 
   return <div>Home</div>;
 };
