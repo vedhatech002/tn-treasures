@@ -4,16 +4,27 @@ import "./index.css";
 import { RouterProvider, Outlet, createBrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
 import { Home } from "./components/Home";
-import { Places } from "./components/Places";
+import { Destinations } from "./components/Destinations";
 import { Contribute } from "./components/Contribute";
 import Footer from "./components/Footer";
+import { Destination } from "./components/Destination";
+import destinationsContext from "./utils/destinationsContext";
+import { useState } from "react";
 
 const AppLayout = () => {
+  const [destinations, setDestinations] = useState([]);
+
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <destinationsContext.Provider
+        value={{ touristPlaces: destinations, setDestinations }}
+      >
+        <Header />
+        <main className=" pt-16">
+          <Outlet />
+        </main>
+        <Footer />
+      </destinationsContext.Provider>
     </>
   );
 };
@@ -23,9 +34,10 @@ const route = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/places", element: <Places /> },
+      { path: "/", element: <Destinations /> },
+      { path: "/destinations", element: <Destinations /> },
       { path: "/contribute", element: <Contribute /> },
+      { path: "/destination/:desId", element: <Destination /> },
     ],
   },
 ]);

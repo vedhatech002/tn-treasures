@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -10,6 +11,7 @@ import { getFirestore } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCYjLh1UakCQTL47mp9iM6dlGGVBwWrKP4",
+
   authDomain: "tn-treasures.firebaseapp.com",
   projectId: "tn-treasures",
   storageBucket: "tn-treasures.appspot.com",
@@ -22,6 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
+export const storage = getStorage(app);
 
 // console.log(app);
 // console.log(import.meta.env);

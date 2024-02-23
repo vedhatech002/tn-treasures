@@ -2,11 +2,13 @@
 
 ### todo
 
+- [x] route setup
 - [ ] Home page
 - [ ] search page
 - [ ] places page
 - [ ] contribute page
 - [x] firebase setup
+- [x] exploring firebase crud
 
 ### get doc
 
