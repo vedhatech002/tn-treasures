@@ -10,6 +10,7 @@ import { storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import FormCategorySelectTag from "./forms/FormCategorySelectTag";
 import FormDistrictSelectTag from "./forms/FormDistrictSelectTag";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
   destination: z
@@ -81,6 +82,8 @@ export const Contribute = () => {
     reset,
   } = useForm({ resolver: zodResolver(formSchema) });
 
+  const navigate = useNavigate();
+
   const sendData = (formData) => {
     const data = {
       ...formData,
@@ -90,6 +93,8 @@ export const Contribute = () => {
     const setFireStoreData = async () => {
       const docRef = await addDoc(collection(db, "touristPlaces"), data);
       console.log("Document written with ID: ", docRef.id);
+      alert("thanks for contributing 🤗");
+      navigate("/");
       reset();
     };
     setFireStoreData();
