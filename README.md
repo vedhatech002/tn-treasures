@@ -3,12 +3,15 @@
 ### todo
 
 - [x] route setup
-- [ ] Home page
-- [ ] search page
 - [x] places page
 - [x] contribute page
 - [x] firebase setup
 - [x] exploring firebase crud
+- [x] CRUD operation React + FireBase
+- [ ] Home page
+- [ ] search option
+- [ ] filter option
+- [ ] file validation for storage
 
 ### get doc
 
@@ -33,10 +36,9 @@ getFirebaseDatas();
 
 ```js
 const setData = async () => {
-  const docRef = collection(db, "touristPlaces");
-  await setDoc(doc(docRef, "kodiyakkarai"), {
-    name: "kodiyakkarai",
-    district: "nagappatinam",
+  const docRef = collection(db, collectionName);
+  await setDoc(doc(docRef, documntId), {
+    data,
   });
   console.log("Document written with ID: ", docRef.id);
 };
@@ -47,9 +49,8 @@ setData();
 
 ```js
 const setFireStoreData = async () => {
-  await addDoc(collection(db, "location"), {
-    name:"valankanni"
-     district: "nagappatinam",
+  await addDoc(collection(db, collectionName), {
+    // some data to store
   });
 };
 ```
@@ -58,10 +59,10 @@ const setFireStoreData = async () => {
 
 ```js
 const updateData = async () => {
-  const kodikaraiRef = doc(db, "touristPlaces", "kodiyakkarai");
+  const updateRef = doc(db, collectionName, docId);
 
   await updateDoc(kodikaraiRef, {
-    district: "vedaranyam",
+    prop: "value",
   });
 };
 updateData();
@@ -71,7 +72,7 @@ updateData();
 
 ```js
 const deleteData = async () => {
-  await deleteDoc(doc(db, "touristPlaces", "kodiyakkarai"));
+  await deleteDoc(doc(db, collectionName, docId));
 };
 deleteData();
 ```
