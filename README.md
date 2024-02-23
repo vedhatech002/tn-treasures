@@ -5,8 +5,8 @@
 - [x] route setup
 - [ ] Home page
 - [ ] search page
-- [ ] places page
-- [ ] contribute page
+- [x] places page
+- [x] contribute page
 - [x] firebase setup
 - [x] exploring firebase crud
 
@@ -60,16 +60,6 @@ const setFireStoreData = async () => {
 const updateData = async () => {
   const kodikaraiRef = doc(db, "touristPlaces", "kodiyakkarai");
 
-  // Set the "capital" field of the city 'DC'
-  await updateDoc(kodikaraiRef, {
-    district: "vedaranyam",
-  });
-};
-updateData();
-const updateData = async () => {
-  const kodikaraiRef = doc(db, "touristPlaces", "kodiyakkarai");
-
-  // Set the "capital" field of the city 'DC'
   await updateDoc(kodikaraiRef, {
     district: "vedaranyam",
   });
@@ -84,4 +74,17 @@ const deleteData = async () => {
   await deleteDoc(doc(db, "touristPlaces", "kodiyakkarai"));
 };
 deleteData();
+```
+
+## file validation
+
+```js
+image: z
+.any()
+.refine((files) => files?.[0]?.size <= 5000000, `Max image size is 5MB.`)
+.refine(
+(files) =>
+["image/jpeg", "image/jpg", "image/webp"].includes(files?.[0]?.type),
+"Only .jpg, .jpeg formats are supported."
+),
 ```

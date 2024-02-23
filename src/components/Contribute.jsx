@@ -144,6 +144,10 @@ export const Contribute = () => {
                 name="image"
                 onChange={(e) => setFile(e.target.files[0])}
               />
+
+              <small className="text-red-500 ml-2  top-10">
+                {errors?.image?.message}
+              </small>
             </div>
           </div>
           <div>

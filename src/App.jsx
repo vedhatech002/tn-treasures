@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import { Destination } from "./components/Destination";
 import destinationsContext from "./utils/destinationsContext";
 import { useState } from "react";
+import UpdateForm from "./components/UpdateForm";
 
 const AppLayout = () => {
   const [destinations, setDestinations] = useState([]);
@@ -38,6 +39,7 @@ const route = createBrowserRouter([
       { path: "/destinations", element: <Destinations /> },
       { path: "/contribute", element: <Contribute /> },
       { path: "/destination/:desId", element: <Destination /> },
+      { path: "/updatecontent/:desId", element: <UpdateForm /> },
     ],
   },
 ]);

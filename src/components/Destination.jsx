@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import destinationsContext from "../utils/destinationsContext";
 import db from "../firebase";
 import { doc, deleteDoc } from "firebase/firestore";
@@ -53,12 +53,20 @@ export const Destination = () => {
           </span>
         </h3>
 
-        <button
-          className="bg-red-500 text-white font-semibold px-4 py-2 rounded"
-          onClick={reportContent}
-        >
-          Report this content
-        </button>
+        <div className="flex items-center gap-3">
+          <Link
+            to={`/updatecontent/${desId}`}
+            className="bg-green-500 text-white font-semibold px-4 py-2 rounded"
+          >
+            Update
+          </Link>
+          <button
+            className="bg-red-500 text-white font-semibold px-4 py-2 rounded"
+            onClick={reportContent}
+          >
+            Report
+          </button>
+        </div>
       </div>
     </section>
   );
